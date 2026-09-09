@@ -199,8 +199,8 @@ body {
 /* ============ リール ============ */
 .reels-housing {
   position: relative;
-  flex: 1 1 auto;
-  min-height: calc(var(--face-h) + 56px);
+  /* ドラムの上下に付く黒縁は固定。余った高さで間延びさせない */
+  flex: 0 0 calc(var(--face-h) + 40px);
   border-radius: 16px;
   background: radial-gradient(ellipse at 50% 0%, #1c2340, #05060d 75%);
   box-shadow:
@@ -343,8 +343,15 @@ body {
 }
 
 /* ============ 当たり表示 ============ */
+/* 当たり表示はドラム窓の中に重ねる。
+   専用の行を確保すると、当たっていない間ずっと余白になる */
 .win-banner {
-  height: 28px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 4px;
+  z-index: 22;
+  height: 26px;
   display: grid;
   place-items: center;
   font-weight: 900;
