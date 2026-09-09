@@ -1,5 +1,7 @@
 # LLM Vegas
 
+*English | [日本語](README.ja.md)*
+
 A slot machine that spins itself every time Claude burns 10,000 output tokens.
 
 It sits on top of your screen while you work. You don't pull the lever — your coding agent does, by doing its job. Long agent runs turn into a rush of spins; a quiet afternoon turns into silence.
