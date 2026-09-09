@@ -45,7 +45,6 @@ const coinsEl = $('coins')
 const gaugeEl = $('gauge')
 const nextEl = $('nextTokens')
 const burnEl = $('burn')
-const coinSlotEl = $('coinSlot')
 const bannerEl = $('winBanner')
 const rushEl = $('rush')
 const cutinEl = $('cutin')
@@ -476,9 +475,6 @@ api.onTokens((delta) => {
 
   // トークンが投入口に落ちる音
   sfx.coinInsert()
-  coinSlotEl.classList.remove('eat')
-  void coinSlotEl.offsetWidth
-  coinSlotEl.classList.add('eat')
 
   pump()
 })
