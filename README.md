@@ -23,6 +23,14 @@ llm-vegas
 
 The first launch unpacks the Electron runtime into `~/Library/Application Support/LLM Vegas/runtime`, which takes a few seconds. Every launch after that is immediate.
 
+Homebrew installs a command, not an app bundle. To launch it from Finder or Spotlight instead, copy the bundled launcher into `/Applications`:
+
+```bash
+cp -R "$(brew --prefix llm-vegas)/libexec/LLM Vegas.app" /Applications/
+```
+
+The launcher points at a stable path, so it keeps working after `brew upgrade`. It has no custom icon.
+
 Or run it from source:
 
 ```bash

@@ -20,6 +20,14 @@ llm-vegas
 
 初回起動時だけ Electron ランタイムを `~/Library/Application Support/LLM Vegas/runtime` に展開するため数秒かかります。2 回目以降は待ちません。
 
+Homebrew が入れるのはコマンドであって、アプリ本体ではありません。Finder や Spotlight から起動したい場合は、同梱のランチャーを `/Applications` にコピーします。
+
+```bash
+cp -R "$(brew --prefix llm-vegas)/libexec/LLM Vegas.app" /Applications/
+```
+
+ランチャーは安定したパスを指しているので、`brew upgrade` したあともコピーしたままで動きます。アイコンは付いていません。
+
 ソースから動かす場合は次のとおりです。
 
 ```bash
