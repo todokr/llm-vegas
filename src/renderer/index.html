@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:"
+    />
+    <title>LLM VEGAS</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <canvas id="fx"></canvas>
+
+    <div id="machine" class="machine">
+      <div class="cabinet">
+        <div class="neon-frame"></div>
+
+        <header class="marquee">
+          <div class="bulbs"></div>
+          <h1 class="logo" data-text="LLM VEGAS">LLM VEGAS</h1>
+          <div class="bulbs"></div>
+          <div class="drag-handle"></div>
+          <button id="bgm" class="chip" title="Music">🎵</button>
+          <button id="mute" class="chip" title="Mute">🔊</button>
+          <button id="quit" class="chip" title="Quit">✕</button>
+        </header>
+
+        <div class="rush" id="rush">🔥 TURBO 🔥</div>
+
+        <div class="reels-housing" id="housing">
+          <div class="cutin" id="cutin"><span></span></div>
+          <div class="glass"></div>
+          <div class="rows-shade"></div>
+          <div class="payline">
+            <span class="mark left">▶</span>
+            <span class="mark right">◀</span>
+          </div>
+          <div class="reels">
+            <div class="reel" data-reel="0"><div class="cylinder"></div></div>
+            <div class="reel" data-reel="1"><div class="cylinder"></div></div>
+            <div class="reel" data-reel="2"><div class="cylinder"></div></div>
+          </div>
+        </div>
+
+        <div class="win-banner" id="winBanner"><span></span></div>
+
+        <section class="panel">
+          <div class="credit">
+            <div class="label">COINS</div>
+            <div class="value led" id="coins">0</div>
+          </div>
+          <div class="right">
+            <div class="next">
+              <div class="label">
+                NEXT SPIN <span id="nextTokens">10,000</span> tok
+              </div>
+              <div class="gauge">
+                <div class="gauge-fill" id="gauge"></div>
+                <div class="coin-slot" id="coinSlot"></div>
+              </div>
+            </div>
+            <div class="burn">
+              <span class="label">BURNED</span>
+              <span class="value" id="burn">$0.00</span>
+            </div>
+          </div>
+        </section>
+
+        <footer class="stats">
+          <span>SPINS <b id="stSpins">0</b></span>
+          <span>WINS <b id="stBig">0</b></span>
+          <span>JACKPOTS <b id="stJp">0</b></span>
+        </footer>
+      </div>
+    </div>
+
+    <div class="blackout" id="blackout"></div>
+
+    <div class="jackpot-overlay" id="jackpot">
+      <div class="rays"></div>
+      <div class="pillar"></div>
+      <div class="jp-text">
+        <div class="jp-line">J A C K P O T</div>
+        <div class="jp-sub">777</div>
+        <div class="jp-amount" id="jpAmount">0</div>
+      </div>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

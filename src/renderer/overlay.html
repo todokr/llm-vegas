@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; style-src 'unsafe-inline'"
+    />
+    <title>LLM VEGAS OVERLAY</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 100%; height: 100%; overflow: hidden; background: transparent; }
+
+      /* デスクトップの四辺を走る虹色のネオン枠 */
+      .frame {
+        position: fixed;
+        inset: 0;
+        padding: 14px;
+        background: conic-gradient(
+          from 0deg,
+          #ff2d55, #ff8a00, #ffd75e, #7cff5e, #22e0ff, #ff2fd6, #ff2d55
+        );
+        -webkit-mask:
+          linear-gradient(#000 0 0) content-box,
+          linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        filter: saturate(1.8) blur(0.5px);
+        animation: hue 1.4s linear infinite, breathe 0.5s ease-in-out infinite alternate;
+      }
+
+      /* 内側に滲む光 */
+      .glow {
+        position: fixed;
+        inset: 0;
+        box-shadow:
+          inset 0 0 60px rgba(255, 45, 85, 0.55),
+          inset 0 0 160px rgba(255, 215, 94, 0.35);
+        animation: glowPulse 0.42s ease-in-out infinite alternate;
+      }
+
+      @keyframes hue { to { filter: saturate(1.8) hue-rotate(360deg) blur(0.5px); } }
+      @keyframes breathe { to { padding: 26px; } }
+      @keyframes glowPulse {
+        to {
+          box-shadow:
+            inset 0 0 110px rgba(34, 224, 255, 0.7),
+            inset 0 0 240px rgba(255, 47, 214, 0.5);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="glow"></div>
+    <div class="frame"></div>
+  </body>
+</html>
