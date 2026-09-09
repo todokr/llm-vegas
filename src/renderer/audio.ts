@@ -238,6 +238,15 @@ export class Sfx {
     for (let i = 0; i < 4; i++) this.blip(1400 + i * 60, 0.06, 'square', 0.12, i * 0.12)
   }
 
+  /** トークンが届いたときのチャリン */
+  coinInsert(): void {
+    this.resume()
+    this.noise(0.02, 0.12, 0, 6000)
+    this.blip(2637, 0.08, 'triangle', 0.16)
+    this.blip(3520, 0.1, 'triangle', 0.12, 0.035)
+    this.blip(5274, 0.05, 'sine', 0.07, 0.05)
+  }
+
   coin(at = 0): void {
     this.blip(1500, 0.06, 'triangle', 0.18, at)
     this.blip(2300, 0.08, 'triangle', 0.14, at + 0.03)

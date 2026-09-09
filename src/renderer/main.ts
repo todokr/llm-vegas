@@ -474,13 +474,8 @@ api.onTokens((delta) => {
   renderGauge()
   renderBurn(delta > 3000)
 
-  // 吐かれたトークンが投入口へ吸い込まれる
-  const slot = coinSlotEl.getBoundingClientRect()
-  fx.suck(
-    slot.left + slot.width / 2,
-    slot.top + slot.height / 2,
-    Math.max(1, Math.min(14, Math.round(delta / 1500))),
-  )
+  // トークンが投入口に落ちる音
+  sfx.coinInsert()
   coinSlotEl.classList.remove('eat')
   void coinSlotEl.offsetWidth
   coinSlotEl.classList.add('eat')

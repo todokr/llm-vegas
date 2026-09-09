@@ -11,8 +11,6 @@ type Particle = {
   life: number
   maxLife: number
   gravity: number
-  /** 吸い込み先。指定するとそこへ加速して吸い込まれる */
-  target?: { x: number; y: number }
 }
 
 const CONFETTI_COLORS = [
@@ -95,33 +93,6 @@ export class Fx {
     }
   }
 
-  /**
-   * 画面の外から投入口へ吸い込まれるコイン。
-   * Claude が吐いたトークンがそのまま筐体に入っていく画。
-   */
-  suck(tx: number, ty: number, count: number): void {
-    const w = window.innerWidth
-    const h = window.innerHeight
-    for (let i = 0; i < count; i++) {
-      const fromTop = Math.random() < 0.5
-      this.push({
-        x: fromTop ? Math.random() * w : Math.random() < 0.5 ? -20 : w + 20,
-        y: fromTop ? -20 : Math.random() * h * 0.7,
-        vx: 0,
-        vy: 0,
-        rot: Math.random() * Math.PI,
-        vr: (Math.random() - 0.5) * 0.6,
-        size: 6 + Math.random() * 6,
-        color: '#ffd75e',
-        shape: 'coin',
-        life: 0,
-        maxLife: 200,
-        gravity: 0,
-        target: { x: tx, y: ty },
-      })
-    }
-  }
-
   /** 全方位に飛ぶ光の粒 */
   sparkStorm(count: number): void {
     const cx = window.innerWidth / 2
@@ -159,33 +130,14 @@ export class Fx {
     for (let i = this.parts.length - 1; i >= 0; i--) {
       const p = this.parts[i]
       p.life++
-
-      if (p.target) {
-        // 投入口へ加速しながら吸い込まれる
-        const dx = p.target.x - p.x
-        const dy = p.target.y - p.y
-        const dist = Math.hypot(dx, dy)
-        p.vx += (dx / (dist || 1)) * 1.4
-        p.vy += (dy / (dist || 1)) * 1.4
-        p.vx *= 0.9
-        p.vy *= 0.9
-        p.x += p.vx
-        p.y += p.vy
-        p.rot += p.vr
-        if (dist < 16) {
-          this.parts.splice(i, 1)
-          continue
-        }
-      } else {
-        p.vy += p.gravity
-        p.vx *= 0.995
-        p.x += p.vx
-        p.y += p.vy
-        p.rot += p.vr
-      }
+      p.vy += p.gravity
+      p.vx *= 0.995
+      p.x += p.vx
+      p.y += p.vy
+      p.rot += p.vr
 
       const t = p.life / p.maxLife
-      if (t >= 1 || (!p.target && p.y > window.innerHeight + 80)) {
+      if (t >= 1 || p.y > window.innerHeight + 80) {
         this.parts.splice(i, 1)
         continue
       }
