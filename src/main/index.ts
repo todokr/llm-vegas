@@ -59,6 +59,16 @@ function createWindow(): void {
             .executeJavaScript('__stripAudit(3000)')
             .then((r) => console.log('[audit]', r))
         }, 600)
+      } else if (process.env.LLM_DEBUG === 'rush') {
+        // RUSH の見た目だけを確認する
+        setTimeout(() => {
+          void win?.webContents
+            .executeJavaScript(
+              `document.getElementById('machine').classList.add('rush-mode');
+               getComputedStyle(document.querySelector('.dancers')).display`,
+            )
+            .then((r) => console.log('[rush] dancers display =', r))
+        }, 800)
       } else if (process.env.LLM_DEBUG === 'jackpot') {
         setTimeout(() => void win?.webContents.executeJavaScript('__forceJackpot()'), 800)
       } else {
