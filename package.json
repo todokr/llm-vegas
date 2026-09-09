@@ -11,9 +11,11 @@
     "start": "npm run build && electron .",
     "watch-test": "node scripts/watcher-smoke.mjs"
   },
+  "dependencies": {
+    "electron": "^33.2.1"
+  },
   "devDependencies": {
     "@types/node": "^22.10.2",
-    "electron": "^33.2.1",
     "typescript": "^5.7.2"
   }
 }
