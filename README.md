@@ -14,7 +14,16 @@ This is a joke toy. There is no account, no payout, and no way to cash out. The 
 - Node.js 20+
 - Claude Code, writing transcripts to `~/.claude/projects`
 
-## Run
+## Install
+
+```bash
+brew install todokr/tap/llm-vegas
+llm-vegas
+```
+
+The first launch unpacks the Electron runtime into `~/Library/Application Support/LLM Vegas/runtime`, which takes a few seconds. Every launch after that is immediate.
+
+Or run it from source:
 
 ```bash
 npm install
