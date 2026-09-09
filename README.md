@@ -47,8 +47,6 @@ The draw happens **before the reels move**, exactly like a real machine. The ree
 
 Roughly one spin in five pays something. At a typical 50 spins per day, the jackpot lands every day or two.
 
-**There is exactly one payline — the center row**, marked by the red line and the blinking ▶◀. The rows above and below are dimmed, and the reel strips are re-rolled whenever an off-payline row would accidentally show three of a kind. Otherwise you get the worst feeling in gambling: a win that isn't.
-
 ## The show
 
 **Teasers.** Because the result is known before the reels spin, the machine can foreshadow it honestly. A confidence level of 0–3 is drawn from a weighted table per result — losses are usually 0, a jackpot is almost always 3. The level drives the cabinet color (blue → green → red), a cut-in (`CHANCE` / `HOT!!` / `SUPER HOT!!!`), a reverse-spin kickoff, and a voice line. Level 2 and up escalate into a long reach, where the third reel crawls forward one symbol at a time.
@@ -67,7 +65,7 @@ Roughly one spin in five pays something. At a typical 50 spins per day, the jack
 
 There are no image files, no audio files, and no fonts in this repository.
 
-- The reels are a real CSS 3D cylinder — six faces on `rotateX(i * 60deg) translateZ(r)`, with motion blur applied to the faces rather than the cylinder, because a `filter` on a `preserve-3d` element flattens it.
+- The reels are a real CSS 3D cylinder — six faces on `rotateX(i * 60deg) translateZ(r)`, spun with motion blur and an easing curve that lands them on the drawn result.
 - Confetti, coins, and sparks are a small canvas particle system.
 - Every sound — the motor whir, the reel clunks, the fanfares, and the four-bar background loop — is built at runtime with WebAudio oscillators and noise buffers.
 
@@ -102,7 +100,7 @@ LLM_DEBUG=jackpot npm start   # force a 777 immediately
 LLM_DEBUG=audit npm start     # 3,000 simulated spins, printed as JSON
 ```
 
-The audit checks the two invariants that matter: the center row always matches the drawn result, and no off-payline row ever shows a false three of a kind.
+The audit replays the draw and the reel placement thousands of times and reports anything that came out inconsistent.
 
 ```
 [audit] {"n":3000,"centerMismatch":0,"fakeRows":0,"teasers":[1846,739,294,121]}
@@ -118,3 +116,7 @@ src/main/watcher.ts    transcript polling and output-token accounting
 src/main/store.ts      lifetime stats in userData/stats.json
 src/renderer/          cabinet, reels, particles, synthesized audio, voice
 ```
+
+## License
+
+[Eclipse Public License 2.0](LICENSE)
