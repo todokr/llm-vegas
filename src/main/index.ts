@@ -4,7 +4,7 @@ import { startWatcher } from './watcher'
 import { loadStats, saveStats, type Stats } from './store'
 
 const WIN_W = 380
-const WIN_H = 330
+const WIN_H = 336
 
 let win: BrowserWindow | null = null
 let overlay: BrowserWindow | null = null

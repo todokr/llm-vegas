@@ -427,6 +427,8 @@ body {
   display: flex;
   gap: 10px;
   align-items: stretch;
+  /* COINS の下に少しだけ間を空ける */
+  margin-bottom: 6px;
 }
 
 .right {
